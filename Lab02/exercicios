@@ -834,7 +834,7 @@ int main()
 
     printf("O total a pagar com desconto de 10%%: %.2f\n", valor-(valor*10/100));
     printf("O valor de cada parcela, no parcelamento de 3%% sem juros: %.2f\n", valor/3);
-    printf("A comissao do vendedor, no caso da venda ser a vista (5%% sobre o valor com desconto): %.2f\n", (valor-(valor*10/100))*0.5);
+    printf("A comissao do vendedor, no caso da venda ser a vista (5%% sobre o valor com desconto): %.2f\n", (valor-(valor*10/100))*0.05);
     printf("A comissao do vendedor, no caso da venda ser parcelada (5%% sobre o valor total): %.2f\n", valor*5/100);
 
     return 0;
