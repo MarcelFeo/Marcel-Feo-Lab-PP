@@ -966,15 +966,14 @@ int main()
     scanf("%d", &segundo);
 
     printf("\nDuracao:\n");
-    printf("Hora -> ");
-    scanf("%d", &hora1);
-    printf("Minuto -> ");
-    scanf("%d", &minuto1);
     printf("Segundo -> ");
-    scanf("%d", &segundo1);
+    scanf("%d", &duracao);
+    
+    hora1 = duracao/3600;
+    minuto1 = duracao/60;
+    segundo1 = duracao;
 
     printf("\nTermino -> %d:%d:%d\n", hora+hora1, minuto+minuto1, segundo+segundo1);
-
 
     return 0;
 }
@@ -1069,7 +1068,7 @@ int main()
     printf("Preco do metro de tela -> ");
     scanf("%f", &preco);
 
-    custo = comp*largura*preco;
+    custo = (2*(comp+largura))*preco;
 
     printf("Para cercar este terreno o custo e %.2f reais\n", custo);
 
