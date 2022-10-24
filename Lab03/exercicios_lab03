@@ -226,7 +226,7 @@ int main()
     printf("Altura: ");
     scanf("%f", &altura);
     printf("Sexo(M ou F): ");
-    scanf("%f", &sexo);
+    scanf(" %c", &sexo);
 
     if(sexo == 'M') {
         pesoM = (72.7 * altura) - 58.0;
