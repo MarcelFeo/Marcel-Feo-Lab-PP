@@ -603,7 +603,7 @@ int main(){
     printf("Digite uma sequencia de numeros: ");
     fgets(str, TAM_MAX, stdin);
 
-    for(int i=0; str[i]!='\0'; i++) {
+    for(int i=0; i<strlen(str - 5); i++) {
         
         if(str[i] == '\n') {
             str[i] = '\0';
@@ -616,7 +616,7 @@ int main(){
         }
     }
 
-    printf("O maior produto eh %d", maior);
+    printf("O maior produto eh %d", menor);
 
 	return 0;
 }
