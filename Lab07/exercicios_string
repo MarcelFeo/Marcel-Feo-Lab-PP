@@ -468,15 +468,16 @@ int main(){
                 printf("1.Ler\n2.Imprimir\n3.Comparar\n4.Concatenar\n5.Reverso\n6.Contar um caracter\n7.Substituir\n8.Verificar substring\n9.Retornar substring\n10.Sair\n");
                 scanf("%d",&opcao);
 
-                if((opcao > 9) || (opcao < 1)) {
+                if((opcao > 10) || (opcao < 1)) {
                     printf("Digite uma opcao valida!\n");
                 }
 
-            } while((opcao > 9) || (opcao < 1));
+            } while((opcao > 10) || (opcao < 1));
 
             switch(opcao) {
                 case 1:
-                    printf("Digit uma string: ");
+                    printf("Digite uma string: ");
+                    fflush(stdin);
                     fgets(str1, 20, stdin);
                     break;
 
@@ -487,6 +488,7 @@ int main(){
 
                 case 3:
                     printf("Digite uma string para ser comparada: ");
+                    fflush(stdin);
                     fgets(str2, 20, stdin);
 
                     int comparacao = strcmp(str1, str2);
@@ -545,6 +547,7 @@ int main(){
 
                 case 8:
                     printf("Digite uma string: ");
+                    fflush(stdin);
                     fgets(str2, 20, stdin);
 
                     for(int i=0; str1[i]!= '\0'; i++) {
@@ -565,6 +568,7 @@ int main(){
 
                 case 9:
                     printf("Digite um numero: ");
+                    fflush(stdin);
                     scanf("%d", &num);
 
                     for(int i=0; i<num; i++) {
