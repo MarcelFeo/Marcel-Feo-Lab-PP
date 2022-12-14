@@ -597,6 +597,11 @@ int main() {
         scanf("%d", &voos[i]. quant_saida);
         printf("Voos que chegam: ");
         scanf("%d", &voos[i].quant_chegada);
+        
+        if(voos[i].codigo < 0 || voos[i].codigo > 4) {
+            printf("Codigo invalido! Digite novamente\n");
+            scanf("%d", &voos[i].codigo);
+        }
     }
 
     return 0;
