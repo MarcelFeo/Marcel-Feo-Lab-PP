@@ -331,17 +331,19 @@ int main() {
 		cartas[i].valor = r_valor;
 		printf("Carta %d - Valor: %d - Naipe: ", i, cartas[i].valor);
 	    switch(r_naipe) {
-	        case '0':
+	        case 0:
 	            printf("ouro\n");
 	            break;
-	        case '1':
+	        case 1:
 	            printf("copas\n");
 	            break;
-	        case '2':
+	        case 2:
 	            printf("paus\n");
 	            break;
-	        case '3':
+	        case 3:
 	            printf("espadas\n");
+	            break;
+	        default:
 	            break;
 	    }
 	    
@@ -355,17 +357,19 @@ int main() {
 		cartas[i].valor = r_valor;
 		printf("Carta %d - Valor: %d - Naipe: ", i, cartas[i].valor, cartas[i].naipes[r_naipe]);
 	    switch(r_naipe) {
-	        case '0':
+	        case 0:
 	            printf("ouro\n");
 	            break;
-	        case '1':
+	        case 1:
 	            printf("copas\n");
 	            break;
-	        case '2':
+	        case 2:
 	            printf("paus\n");
 	            break;
-	        case '3':
+	        case 3:
 	            printf("espadas\n");
+	            break;
+	        default:
 	            break;
 	    }
 	}
