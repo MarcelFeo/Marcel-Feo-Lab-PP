@@ -309,6 +309,70 @@ int main() {
 
 8. Escolha um jogo de cartas, baseado em um “baralho tradicional” (cada carta tem seu naipe e seu valor). Implemente a parte de distribuição (sorteio) de cartas para 2 jogadores, considerando que cada jogador irá receber 3 cartas. Exiba na tela as cartas que cada um dos jogadores recebeu.
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef struct cartas {
+	int valor;
+	char naipes[4];
+} Carta;
+
+int main() {
+	
+	Carta cartas[3];
+	
+	srand(time(NULL));
+	
+	printf("Jogador 1:\n");
+	for(int i=1; i<=3; i++) {
+		int r_valor = (rand() % 9) + 1;
+		int r_naipe = (rand() % 3);
+		cartas[i].valor = r_valor;
+		printf("Carta %d - Valor: %d - Naipe: ", i, cartas[i].valor);
+	    switch(r_naipe) {
+	        case '0':
+	            printf("ouro\n");
+	            break;
+	        case '1':
+	            printf("copas\n");
+	            break;
+	        case '2':
+	            printf("paus\n");
+	            break;
+	        case '3':
+	            printf("espadas\n");
+	            break;
+	    }
+	    
+	}
+	
+	printf("\nJogador 2:\n");
+	for(int i=1; i<=3; i++) {
+		int r_valor = (rand() % 9) + 1;
+		int r_naipe = (rand() % 3);
+		
+		cartas[i].valor = r_valor;
+		printf("Carta %d - Valor: %d - Naipe: ", i, cartas[i].valor, cartas[i].naipes[r_naipe]);
+	    switch(r_naipe) {
+	        case '0':
+	            printf("ouro\n");
+	            break;
+	        case '1':
+	            printf("copas\n");
+	            break;
+	        case '2':
+	            printf("paus\n");
+	            break;
+	        case '3':
+	            printf("espadas\n");
+	            break;
+	    }
+	}
+	
+	return 0;
+}
+
 9. Faça um programa que leia um vetor com os dados de 5 carros: marca (máximo 15 letras),
 ano e preço. Leia um valor p e mostre as informações de todos os carros com preço menor
 que p. Repita este processo até que seja lido um valor p = 0.
