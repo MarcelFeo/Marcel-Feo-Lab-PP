@@ -688,10 +688,11 @@ int max(int* lista, int tamanho);
 
 int main() {
   int tamanho, k, i;
-  int lista[tamanho];
   
   printf("Tamanho da lista: ");
   scanf("%d", &tamanho);
+  
+  int lista[tamanho];
   
   printf("Digite %d elementos da lista: ", tamanho);
   for (i = 0; i < tamanho; i++) {
