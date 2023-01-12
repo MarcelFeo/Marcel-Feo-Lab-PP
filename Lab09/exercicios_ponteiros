@@ -242,7 +242,14 @@ lido.
 int main()
 {
 
-    int vet[5] = {1, 2, 3, 4, 5};
+    int vet[5];;
+    
+    printf("Digite os elementos do vetor: \n");
+    for(int i=0; i<5; i++) {
+        printf("Item %d: ", i+1);
+        scanf("%d", &vet[i]);
+    }
+    
     int *p;
     p = vet;
 
@@ -481,6 +488,41 @@ void fracao(float num, int *inteiro, float *frac) {
   *frac = num - *inteiro;
 }
 
+18. Implemente uma função que calcule a área da superfície e o volume de uma esfera de raio
+R. Essa função deve obedecer ao protótipo:
+void calc_esfera(float R, float *area, float *volume);
+A área da superfície e o volume são dados, respectivamente, por:
+A = 4 *  * R2
+V = 4/3 *  * R3
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define PI 3.14159265359
+
+void calc_esfera(float R, float *area, float *volume);
+
+int main()
+{
+    float R, area, volume;
+
+    printf("Digite o valor do raio: ");
+    scanf("%f", &R);
+
+    calc_esfera(R, &area, &volume);
+
+    printf("Area =  %3.f\nVolume %3.f\n", area, volume);
+
+    return 0;    
+
+}
+
+void calc_esfera(float R, float *area, float *volume)
+{
+    *area = 4 * PI * R;
+    *volume = 4/3 * PI * R;
+}
+
 19. Escreva uma função que aceita como parâmetro um array de inteiros com N valores, e
 determina o maior elemento do array e o número de vezes que este elemento ocorreu no
 array. Por exemplo, para um array com os seguintes elementos: 5, 2, 15, 3, 7, 15, 8, 6, 15, a
@@ -553,8 +595,13 @@ o ponteiro ao array. Agora, some mais um (+1) a cada posição do array usando o
 #include <stdio.h>
 
 int main() {
-    int lista[5] = {1, 2, 3, 4, 5};
+    int lista[5];
     int *p = lista;
+    
+    for(int i=0; i<5; i++) {
+        printf("Item %d: ", i+1);
+        scanf("%d", &lista[i]);
+    }
 
     for (int i = 0; i < 5; i++) {
         *p += 1; 
@@ -573,6 +620,14 @@ soma em um terceiro array. Caso o tamanho do primeiro e segundo array seja difer
 então a função retornará ZERO (0). Caso a função seja concluída com sucesso a mesma deve
 retornar o valor UM (1). Utilize aritmética de ponteiros para manipulação do array.
 
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <stdio.h>
 
 int soma_arrays(int *lista1, int *lista2, int *lista_soma, int tamanho_lista1, int tamanho_lista2);
@@ -584,6 +639,16 @@ int main() {
     
     int tamanho_lista1 = sizeof(lista1) / sizeof(int);
     int tamanho_lista2 = sizeof(lista2) / sizeof(int);
+
+    for(int i=0; i<5; i++) {
+        printf("Item %d - Lista 1: ", i+1);
+        scanf("%d", &lista1[i]);
+    }
+    
+    for(int i=0; i<5; i++) {
+        printf("Item %d - Lista 2: ", i+1);
+        scanf("%d", &lista2[i]);
+    }
 
     int funcionou = soma_arrays(lista1, lista2, lista_soma, tamanho_lista1, tamanho_lista2);
 
