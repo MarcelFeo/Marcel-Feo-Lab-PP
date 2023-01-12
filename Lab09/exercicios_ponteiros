@@ -620,14 +620,6 @@ soma em um terceiro array. Caso o tamanho do primeiro e segundo array seja difer
 então a função retornará ZERO (0). Caso a função seja concluída com sucesso a mesma deve
 retornar o valor UM (1). Utilize aritmética de ponteiros para manipulação do array.
 
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
 
 int soma_arrays(int *lista1, int *lista2, int *lista_soma, int tamanho_lista1, int tamanho_lista2);
