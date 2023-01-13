@@ -1,0 +1,518 @@
+2. Faça um programa que leia do usuario o tamanho de um vetor a ser lido e faça a alocação
+dinâmica de memória. Em seguida, leia do usuário seus valores e imprima o vetor lido.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *p;
+    int tam;
+
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &tam);
+
+    p = (int *) malloc(tam*sizeof(int));
+
+    for(int i=0; i<tam; i++) {
+        printf("Digite o elemento %d do vetor: ", i+1);
+        scanf("%d", &p[i]);
+    }
+
+    printf("Elementos do vetor:\n");
+    
+    for(int i=0; i<tam; i++) {
+        
+    	printf("%d ", p[i]);
+    
+    }
+
+    free(p);
+
+    return 0;
+}
+
+4. Faça um programa que receba do usuário o tamanho de uma string e chame uma função
+para alocar dinamicamente essa string. Em seguida, o usuário deverá informar o conteúdo
+dessa string. O programa imprime a string sem suas vogais.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char *p;
+    char *nova_string;
+    int tam;
+
+    printf("Digite o tamanho da string: ");
+    scanf("%d", &tam);
+
+    p = (char *) malloc(tam*sizeof(char));
+    nova_string = (char *) malloc(tam*sizeof(char));
+
+    printf("Digite o conteudo da string: ");
+    fflush(stdin);
+    fgets(p, tam, stdin);
+
+    for(int i=0; i<tam; i++) {
+        if(p[i] == 'a' || p[i] == 'e' || p[i] == 'i' || p[i] == 'o' || p[i] == 'u') {
+            break;
+        }
+
+        printf("%c", p[i]);
+    }
+
+    return 0;
+}
+
+
+
+6. Faça um programa que simule a memória de um computador: o usuário irá especificar o
+tamanho da memória, ou seja, quantos bytes serão alocados do tipo inteiro. Para tanto, a
+memória solicitada deve ser um valor múltiplo do tamanho do tipo inteiro. Em seguida, o
+usuário terá 2 opções: inserir um valor em uma determinada posição ou consultar o valor
+contido em uma determinada posição. A memória deve iniciar com todos os dados zerados.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int tam, op, pos, valor;
+    int *p;
+
+    printf("Digite o tamanho da memoria: ");
+    scanf("%d", &tam);
+
+    p = (int *) calloc(tam, sizeof(int));
+
+    do {
+        printf("Digite uma das opcoes:\n");
+        printf("1.Inserir um valor em uma determinada posicao\n2.Consultar o valor\n");
+        scanf("%d", &op);
+
+        if(op < 1 || op > 2) {
+            printf("Digite uma opcao valida!\n");
+        }
+
+    } while(op < 1 || op > 2);
+
+    switch(op){
+        case 1:
+            printf("Digite a posicao: ");
+            scanf("%d", &pos);
+            printf("Digite o valor: ");
+            scanf("%d", &valor);
+            p[pos] = valor;
+            break;
+        case 2:
+            printf("Digite a posicao: ");
+            scanf("%d", &pos);
+            printf("O valor nessa posicao eh %d\n", p[pos]);
+            break;
+        default:
+            break;
+    }
+
+    printf("Valores na memoria:\n");
+
+    for(int i=0; i<tam; i++) {
+        printf("Posicao %d = %d\n", i, p[i]);
+    }
+
+
+    return 0;
+}
+
+8. Faça um programa para armazenar em memória um vetor de dados contendo 1500 valores
+do tipo int, usando a função de alocação dinâmica de memória CALLOC:
+a) Faça um loop e verifique se o vetor contém realmente os 1500 valores inicializados com
+zero (conte os 1500 zeros do vetor);
+b) Atribua para cada elemento do vetor o valor do seu índice junto a este vetor;
+c) Exibir na tela os 10 primeiros e os 10 últimos elementos do vetor.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    int *p;
+    int quant_zero;
+
+    p = (int *) calloc(1500, sizeof(int));
+
+    for(int i=0; i<1500; i++) {
+        if(p[i] == 0) {
+            quant_zero++;
+        }
+
+        p[i] = i;
+    }
+
+    printf("Os 10 primeiros elementos:\n");
+
+    for(int i=0; i<10; i++) {
+        printf("Elemento %d = %d\n", i, p[i]);
+    }
+
+    printf("\nOs 10 ultimos elementos:\n");
+
+    for(int i=1500; i>1490; i--) {
+        printf("Elemento %d = %d\n", i, p[i]);
+    }
+
+    return 0;
+}
+
+10. Faça um programa que pergunte ao usuário quantos valores ele deseja armazenar em um
+vetor de double, depois use a função MALLOC para reservar (alocar) o espaço de memória
+de acordo com o especificado pelo usuário. Esse vetor deve ter um tamanho maior ou igual
+a 10 elementos. Use este vetor dinâmico como um vetor comum, atribuindo aos 10
+primeiros elementos do vetor valores aleatórios (usando a função rand) entre 0 e 100. Exiba
+na tela os valores armazenados nos 10 primeiros elementos do vetor.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+
+    int quant;
+    double *p;
+
+    printf("Quantos valores para armazenar: ");
+    scanf("%d", &quant);
+
+    srand(time(NULL));
+
+    if(quant >= 10) {
+        p = (double *) malloc(quant*sizeof(double));
+
+        for(int i=0; i<quant; i++) {
+            p[i] = rand() % 100;
+            printf("Elemento %d = %lf\n", i, p[i]);
+        }
+    } else {
+        printf("Digite um valor maior ou igual a 10!\n");
+    }
+
+    free(p);
+
+    return 0;
+}
+
+
+12. Considere um cadastro de produtos de um estoque, com as seguintes informações para cada
+produto:
+Código de identificação do produto: representado por um valor inteiro
+Nome do produto: com até 50 caracteres
+Quantidade disponível no estoque: representado por um número inteiro
+Preço de venda: representado por um valor real
+a) Defina uma estrutura, denominada produto, que tenha os campos apropriados para
+guardar as informações de um produto;
+b) Crie um conjunto de N produtos (N é um valor fornecido pelo usuário) e peca ao usuário
+para entrar com as informações de cada produto;
+c) Encontre o produto com o maior preço de venda;
+d) Encontre o produto com a maior quantidade disponível no estoque.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct produto {
+    int codigo;
+    char nome[50];
+    int quant;
+    float preco;
+};
+
+int main()
+{
+    struct produto *p;
+    int N, maior_quant=0;
+    float maior_preco=0;
+
+    printf("Digite N: ");
+    scanf("%d", &N);
+
+    p = (struct produto *) malloc(N*sizeof(struct produto));
+
+    if(p == NULL) {
+        printf("Erro ao alocar memoria!\n");
+        return 1;
+    }
+
+    for(int i=0; i<N; i++) {
+        printf("Digite o codigo: ");
+        scanf("%d", &p[i].codigo);
+        printf("Digite o nome: ");
+        fflush(stdin);
+        fgets(p[i].nome, 50, stdin);
+        printf("Digite a quantidade: ");
+        scanf("%d", &p[i].quant);
+        printf("Digite o preco: ");
+        scanf("%f", &p[i].preco);
+        if(p[i].preco < 0){
+            printf("Preco invalido, digite novamente: ");
+            scanf("%f", &p[i].preco);
+        }
+    }
+
+    for(int i=0; i<N; i++) {
+        if(p[i].preco > maior_preco) {
+            maior_preco = p[i].preco;
+        }
+
+        if(p[i].quant > maior_quant) {
+            maior_quant = p[i].quant;
+        }
+    }
+
+    printf("Produto com maior preco: %.2f\n", maior_preco);
+    printf("Produto com maior quantidade: %d\n", maior_quant);
+
+    free(p);
+
+    return 0;
+}
+
+14. Construa um programa que leia o número de linhas e de colunas de uma matriz de números
+reais, aloque espaço dinamicamente para esta e a inicialize com valores fornecidos pelo
+usuário. Ao final, o programa deverá retornar a matriz na saída padrão com layout
+apropriado.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int linhas, colunas;
+
+    printf("Digite o numero de linhas da matriz: ");
+    scanf("%d", &linhas);
+    printf("Digite o numero de colunas da matriz: ");
+    scanf("%d", &colunas);
+
+    float **matriz;
+    matriz = (float **) malloc(linhas * sizeof(float *));
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = (float *) malloc(colunas * sizeof(float));
+    }
+
+    printf("Insira os valores da matriz: \n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            scanf("%f", &matriz[i][j]);
+        }
+    }
+
+    printf("\nMatriz: \n");
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("%.2f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+    
+    return 0;
+}
+
+16. Faça um programa que leia dois números N e M:
+a) Crie e leia uma matriz N x M de inteiros;
+b) Crie e construa uma matriz transposta M x N de inteiros;
+c) Mostre as duas matrizes.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int N, M;
+    int **matriz, **matriz_tran;
+    
+    printf("Digite o numero de linhas da matriz: ");
+    scanf("%d", &N);
+    printf("Digite o numero de colunas da matriz: ");
+    scanf("%d", &M);
+
+    matriz = (int **) malloc(N * sizeof(int *));
+    for (int i = 0; i < N; i++) {
+        matriz[i] = (int *) malloc(M * sizeof(int));
+    }
+
+    printf("Digite os valores da matriz: \n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    matriz_tran = (int **) malloc(M * sizeof(int *));
+    for (int i = 0; i < M; i++) {
+        matriz_tran[i] = (int *) malloc(N * sizeof(int));
+    }
+
+    // Construindo a matriz transposta
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            matriz_tran[j][i] = matriz[i][j];
+        }
+    }
+
+    // Mostrando as matrizes
+    printf("\nMatriz: \n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nMatriz transposta: \n");
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d ", matriz_tran[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Liberando a memória alocada
+    for (int i = 0; i < N; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    for (int i = 0; i < M; i++) {
+        free(matriz_tran[i]);
+    }
+    free(matriz_tran);
+
+    return 0;
+}
+
+18. Escreva um programa para fazer a alocação dinâmica dos blocos de dados conforme
+solicitado abaixo:
+a) Vetor de 1024 Bytes (1 Kbyte);
+b) Matriz de inteiros de dimensão 10 × 10;
+c) Vetor para armazenar 50 registros contendo: nome do produto (30 caracteres), código
+do produto (inteiro) e preço em reais;
+d) Texto de até 100 linhas com até 80 caracteres em cada linha.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Produto {
+    char nome[30];
+    int codigo;
+    float preco;
+};
+
+int main() {
+
+    char *vetor;
+    int **matriz;
+    
+    // letra a
+    vetor = (char *) malloc(1024 * sizeof(char));
+    
+
+    // letra b
+    matriz = (int **) malloc(10 * sizeof(int *));
+    for (int i = 0; i < 10; i++) {
+        matriz[i] = (int *) malloc(10 * sizeof(int));
+    }
+    
+
+    // letra c
+    struct Produto *registros;
+    registros = (struct Produto *) malloc(50 * sizeof(struct Produto));
+
+    // letra d
+    char **texto;
+    texto = (char **) malloc(100 * sizeof(char *));
+    for (int i = 0; i < 100; i++) {
+        texto[i] = (char *) malloc(80 * sizeof(char));
+    }
+
+    free(vetor);
+
+    for (int i = 0; i < 10; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    free(registros);
+    
+    return 0;
+}
+
+20. Faça um programa que:
+a) Peça para o usuário entrar com o nome e a posição (coordenadas X e Y) de N cidades e
+as armazene em um vetor de estruturas (N é informado pelo usuário);
+b) Crie uma matriz de distâncias entre cidades de tamanho N x N;
+c) Calcule as distâncias entre cada duas cidades e armazene na matriz;
+d) Exiba na tela a matriz de distancias obtida;
+e) Quando o usuário digitar o número de duas cidades o programa deverá retornar a
+distância entre elas.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct cidades {
+    int x, y;
+    char nome[50];
+};
+
+int main() {
+    
+    int N, **matriz;
+    struct cidades *p;
+    
+    printf("Digite N: ");
+    scanf("%d", &N);
+    
+    p = (struct cidades *) malloc(N*sizeof(struct cidades));
+    
+    for(int i=0; i<N; i++) {
+        printf("Digite o nome: ");
+        fgets(p[i].nome, 50, stdin);
+        
+        printf("Digite a posicao X e Y: ");
+        scanf("%d %d", &p[i].x, &p[i].y);    
+    }
+    
+    matriz = (int **) malloc(N*sizeof(int *));
+    for (int i = 0; i < 10; i++) {
+        matriz[i] = (int *) malloc(N*sizeof(int));
+    }
+    
+    for(int i=0; i<N; i++) {
+        for(int j=0; j<i; j++) {
+            int dist = sqrt(pow(p[i].x - p[j].x, 2) + pow(p[i].y - p[j].y, 2));
+            matriz[i][j] = dist;
+        }
+    }
+    
+    int c1, c2;
+    printf("Digite o numero da primeira cidade: ");
+    scanf("%d", &c1);
+    printf("Digite o numero da segunda cidade: ");
+    scanf("%d", &c2);
+
+    printf("A distancia entre %s e %s: %d", p[c1 - 1].nome, p[c2 - 1].nome, matriz[c1 - 1][c2 - 1]);
+    
+    for (int i = 0; i < N; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+
+    free(p);
+    
+    return 0;
+}
